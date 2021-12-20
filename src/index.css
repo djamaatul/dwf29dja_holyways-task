@@ -1,20 +1,21 @@
 @font-face {
-  font-family: product-sans;
-  src: url(../src/assets/Product\ Sans\ Regular.ttf);
+	font-family: product-sans;
+	src: url(../src/assets/Product\ Sans\ Regular.ttf);
 }
-*{
-  font-family: product-sans;
+* {
+	font-family: product-sans !important;
 }
 *:before,
-*:after {}
+*:after {
+}
 
 html {
-  background-color: #E8E8E8;
+	background-color: #e8e8e8;
 }
-#root{
-  background-color: #E8E8E8;
+#root {
+	background-color: #e8e8e8;
 }
-.alert-success{
-  background-color: rgba(0, 255, 117,0.1);
-  color : rgb(0, 255, 117);
+.alert-success {
+	background-color: rgba(0, 255, 117, 0.1);
+	color: rgb(0, 255, 117);
 }

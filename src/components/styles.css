@@ -1,7 +1,6 @@
-.dropdown{
-	top: 40px;
-	right: -5px;
-	display: none;
+.dropdown {
+	top: 60px;
+	right: 5px;
 	position: absolute;
 	background-color: white;
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -10,45 +9,44 @@
 	z-index: 999;
 	width: 200px;
 }
-#dpcontain{
+#dpcontain {
 	position: relative;
 }
-.show{
+.show {
 	display: inline-block;
 }
-.dropdown ul{
+.dropdown ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-.dropdown li a{
+.dropdown li a {
 	color: black;
 	display: block;
 	padding: 10px 20px;
 	text-decoration: none;
-	font-size: .8em;
-
+	font-size: 0.8em;
 }
-.dropdown a:hover{
+.dropdown a:hover {
 	color: var(--primary);
 }
-.dropdown img{
+.dropdown img {
 	vertical-align: middle;
 	margin-right: 13px;
 }
-.dropdown hr{
+.dropdown hr {
 	margin: 0;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.dropdown::after{
+.dropdown::after {
 	content: "";
 	display: inline-block;
 	position: absolute;
-	transform: scale(.7,1);
+	transform: scale(0.7, 1);
 	top: -29px;
 	right: 10px;
 	border: 15px solid transparent;
 	border-bottom-color: white;
-	filter: drop-shadow(0px -1.5px 1px rgba(0,0,0,0.1));
+	filter: drop-shadow(0px -1.5px 1px rgba(0, 0, 0, 0.1));
 }
