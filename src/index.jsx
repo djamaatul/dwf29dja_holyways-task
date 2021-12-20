@@ -23,7 +23,7 @@ ReactDOM.render(
 					<Route path='detailfund' element={<Detailfund />} />
 					<Route path='makefund' element={<Formfund />} />
 				</Route>
-				<Route path='*' element={<h1>404 NULL</h1>} />
+				<Route path='*' element={<h1 style={{ textAlign: 'center', lineHeight: '100vh' }}>404 NULL</h1>} />
 			</Routes>
 		</Router>
 	</React.StrictMode>,

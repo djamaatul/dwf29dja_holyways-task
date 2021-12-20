@@ -40,7 +40,7 @@
 }
 
 .dropdown::after {
-	content: "";
+	content: '';
 	display: inline-block;
 	position: absolute;
 	transform: scale(0.7, 1);
