@@ -2,7 +2,7 @@
 @media only screen and (max-width: 600px) {
 	#landing1 {
 		margin: 0 auto;
-		padding-bottom: 10vh;
+		padding-bottom: 5vh;
 		display: block;
 		width: 80%;
 	}
@@ -29,7 +29,7 @@
 		width: 80%;
 	}
 	#landing2 {
-		width: 95%;
+		width: 80%;
 	}
 }
 
@@ -37,15 +37,15 @@
 @media only screen and (min-width: 992px) {
 	#landing1 {
 		position: absolute;
-		right: 0px;
-		width: 300px;
-		bottom: -50px;
+		right: 0;
+		top: 80px;
+		width: 34%;
 	}
 	#landing2 {
 		position: absolute;
 		left: 0px;
-		width: 300px;
-		top: -80px;
+		width: 30%;
+		top: -140px;
 	}
 }
 

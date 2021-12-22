@@ -22,10 +22,10 @@ function Header() {
 			<Login show={showIn} hide={toggleIn} />
 			<Register show={showReg} hide={toggleReg} />
 			<Navbar collapseOnSelect className='bg-primary'>
-				<Container fluid='xl'>
-					<Navbar.Brand>
+				<Container fluid='xxl'>
+					<Navbar.Brand className='ms-md-5 ps-md-5'>
 						<Link to='/'>
-							<img src={logo} width='80' height='80' className='d-inline-block align-top' alt='Logo' />
+							<img src={logo} width='65' height='65' className='d-inline-block align-top' alt='Logo' />
 						</Link>
 					</Navbar.Brand>
 					<Nav className='ms-auto'></Nav>
@@ -47,7 +47,12 @@ function Header() {
 							<Button onClick={toggleIn} variant='primary text-secondary'>
 								Login
 							</Button>
-							<Button onClick={toggleReg} className='ms-4 text-primary ' variant='secondary'>
+							<Button
+								onClick={toggleReg}
+								style={{ borderRadius: 10 }}
+								className='ms-4 text-primary fw-bold '
+								variant='secondary'
+							>
 								Register
 							</Button>
 						</Nav.Link>

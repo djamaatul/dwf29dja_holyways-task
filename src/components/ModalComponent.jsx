@@ -1,19 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 
-import ModalApprove from './ModalApprove';
-
 import struk from '../assets/icon/struk.svg';
-import { showContext } from '../contexts/ShowProvider';
 
 function ModalComponent(props) {
-	const { showmodalaprove, toggleModalApprove } = useContext(showContext);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 	};
 	return (
 		<Modal onHide={props.hide} show={props.show}>
-			<ModalApprove show={showmodalaprove} hide={toggleModalApprove} />
 			<Modal.Body>
 				<Form onSubmit={handleSubmit}>
 					<Form.Group className='my-4 mt-0' controlId='formBasicEmail'>
@@ -31,13 +26,7 @@ function ModalComponent(props) {
 						</Col>
 					</Row>
 					<div className='d-grid gap-2'>
-						<Button
-							onClick={toggleModalApprove}
-							showModalApprove
-							className='full'
-							variant='primary'
-							type='submit'
-						>
+						<Button showModalApprove className='full' variant='primary' type='submit'>
 							Donate
 						</Button>
 					</div>

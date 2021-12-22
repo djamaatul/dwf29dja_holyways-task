@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Row, Col, Alert } from 'react-bootstrap';
 
 function History(props) {
@@ -17,13 +17,13 @@ function History(props) {
 					</Card.Body>
 				</Col>
 				{props.viewStatus && (
-					<Col className='d-flex align-items-end mt-5 pe-5 justify-content-end' xs='4'>
+					<Col className='d-flex align-items-end pe-4 justify-content-end' xs='4'>
 						{props.success ? (
-							<Alert className='alert-success p-2 h-1' variant='success'>
+							<Alert className='alert-success p-2 py-0  px-5' variant='success'>
 								Success
 							</Alert>
 						) : (
-							<Alert className='alert-success p-2 h-1' variant='danger'>
+							<Alert className='alert-success p-2  py-0' variant='danger'>
 								Failed
 							</Alert>
 						)}

@@ -32,12 +32,6 @@ function Raisefund() {
 					<Col xs={12} sm={6} md={4}>
 						<Cards id={4} title='siap' p='lorem ipsum' total='100000' target='1000000' src={pic3} />
 					</Col>
-					<Col xs={12} sm={6} md={4}>
-						<Cards id={4} title='siap' p='lorem ipsum' total='500000' target='1000000' src={pic3} />
-					</Col>
-					<Col xs={12} sm={6} md={4}>
-						<Cards id={4} title='siap' p='lorem ipsum' total='0' target='1000000' src={pic3} />
-					</Col>
 				</Row>
 			</Container>
 		);

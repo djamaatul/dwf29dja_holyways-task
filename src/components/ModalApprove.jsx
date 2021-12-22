@@ -7,7 +7,7 @@ function ModalApprove(props) {
 		<Modal onHide={props.hide} show={props.show}>
 			<Modal.Body>
 				<h5>Zain</h5>
-				<Form action='#'>
+				<Form>
 					<Form.Group className='my-4 mt-0' controlId='formBasicEmail'>
 						<Form.Control type='email' placeholder='Nominal Donation' />
 					</Form.Group>

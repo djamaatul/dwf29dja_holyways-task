@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { loginContext } from '../contexts/LoginProvider';
 import { showContext } from '../contexts/ShowProvider';
+
 import Register from '../components/Register';
 
 import data from '../data/users';
