@@ -1,15 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Col, Row, Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cards from '../components/Cards';
-import pic3 from '../assets/card1.svg';
 
 import { loginContext } from '../contexts/LoginProvider';
+import { API } from '../config/api';
 
 function Raisefund() {
-	const { userData, isLogin } = useContext(loginContext);
-	if (!isLogin) {
+	const [state] = useContext(loginContext);
+	const [myfunds, setMyFunds] = useState([]);
+	async function userFunds() {
+		try {
+			const response = await API.get('/fundsUser');
+			setMyFunds(response.data.data);
+		} catch (error) {
+			throw error;
+		}
+	}
+	useEffect(() => {
+		userFunds();
+	});
+	if (!state.isLogin) {
 		return <Navigate to='/' />;
 	} else {
 		return (
@@ -29,9 +41,20 @@ function Raisefund() {
 					</Col>
 				</Row>
 				<Row>
-					<Col xs={12} sm={6} md={4}>
-						<Cards id={4} title='siap' p='lorem ipsum' total='100000' target='1000000' src={pic3} />
-					</Col>
+					{myfunds.map((item, index) => {
+						return (
+							<Col xs={12} sm={6} md={4} key={index}>
+								<Cards
+									id={item.id}
+									title={item.title}
+									p={item.description}
+									collected={item.collected}
+									goal={item.goal}
+									src={item.thumbnail}
+								/>
+							</Col>
+						);
+					})}
 				</Row>
 			</Container>
 		);

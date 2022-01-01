@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './custom-bootstrap.scss';
+import './index.css';
+
+import ShowProvider from './contexts/ShowProvider';
+import LoginProvider from './contexts/LoginProvider';
 
 import App from './App';
 import Dashboard from './pages/Dashboard';
@@ -15,21 +19,51 @@ import Profile from './pages/Profile';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Router>
-			<Routes>
-				<Route path='/' element={<App />}>
-					<Route index element={<Dashboard />} />
-					<Route path='profile' element={<Profile />} />
-					<Route path='myfund' element={<Myfund />} />
-					<Route path='detailfund'>
-						<Route path=':id' element={<Detailfund />} />
-					</Route>
-					<Route path='detaildonate' element={<DetailDonate />} />
-					<Route path='makefund' element={<Formfund />} />
-				</Route>
-				<Route path='*' element={<h1 style={{ textAlign: 'center', lineHeight: '100vh' }}>404 NULL</h1>} />
-			</Routes>
-		</Router>
+		<LoginProvider>
+			<ShowProvider>
+				<Router>
+					<Routes>
+						<Route path='/' element={<App />}>
+							<Route index element={<Dashboard />} />
+							<Route path='profile' element={<Profile />} />
+							<Route path='myfund' element={<Myfund />} />
+							<Route path='detailfund'>
+								<Route path=':id' element={<Detailfund />} />
+							</Route>
+							<Route path='detaildonate'>
+								<Route path=':id' element={<DetailDonate />} />
+							</Route>
+							<Route path='makefund' element={<Formfund />} />
+						</Route>
+						<Route
+							path='*'
+							element={
+								<div
+									style={{
+										backgroundColor: 'white',
+										height: '100vh',
+										width: '100vw',
+										padding: '20px',
+									}}
+								>
+									<div
+										style={{
+											padding: '20px',
+											border: `1px solid #D0D0D0`,
+											boxShadow: `0 0 8px #D0D0D0`,
+										}}
+										id='container'
+									>
+										<h1>404 Page Not Found</h1>
+										<p>The page you requested was not found.</p>{' '}
+									</div>
+								</div>
+							}
+						/>
+					</Routes>
+				</Router>
+			</ShowProvider>
+		</LoginProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

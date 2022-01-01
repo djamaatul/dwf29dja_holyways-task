@@ -7,19 +7,21 @@ import fund from '../assets/icon/fund.svg';
 import logout from '../assets/icon/logout.svg';
 
 import { loginContext } from '../contexts/LoginProvider';
+import { showContext } from '../contexts/ShowProvider';
 
 function DropDown(props) {
-	const { setIsLogin, setUserData } = useContext(loginContext);
+	const [state, dispatch] = useContext(loginContext);
+	const [show, setShow] = useContext(showContext);
 	return (
 		<div style={{ display: props.show ? 'inline-block' : 'none' }} className='dropdown '>
 			<ul>
 				<li>
-					<Link to='/profile'>
+					<Link to='/profile' onClick={() => setShow('dropdown')}>
 						<img width='30px' height='30px' src={user} alt='' /> Profile
 					</Link>
 				</li>
 				<li>
-					<Link to='/myfund'>
+					<Link to='/myfund' onClick={() => setShow('dropdown')}>
 						<img width='30px' height='30px' src={fund} alt='' /> Raise Fund
 					</Link>
 				</li>
@@ -30,8 +32,11 @@ function DropDown(props) {
 					<Link
 						to='/'
 						onClick={() => {
-							setIsLogin(false);
-							setUserData({});
+							localStorage.removeItem('token');
+							dispatch({
+								type: 'LOGOUT',
+								payload: null,
+							});
 						}}
 					>
 						<img width='30px' height='30px' src={logout} alt='' /> Logout

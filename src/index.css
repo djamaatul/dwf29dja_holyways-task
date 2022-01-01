@@ -20,7 +20,3 @@ html {
 #root {
 	background-color: #e8e8e8;
 }
-.alert-success {
-	background-color: rgba(0, 255, 117, 0.1);
-	color: rgb(0, 255, 117);
-}

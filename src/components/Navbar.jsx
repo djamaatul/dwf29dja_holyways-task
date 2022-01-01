@@ -3,8 +3,8 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import DropDown from './DropDown';
-import Login from './Login';
-import Register from './Register';
+import Login from './modal/Login';
+import Register from './modal/Register';
 
 import './styles.css';
 import logo from '../assets/icon/logo.svg';
@@ -14,13 +14,13 @@ import { showContext } from '../contexts/ShowProvider';
 import { loginContext } from '../contexts/LoginProvider';
 
 function Header() {
-	const { showIn, showReg, toggleIn, toggleReg, showDropdown, toggleDropdown } = useContext(showContext);
-	const { isLogin } = useContext(loginContext);
+	const [show, setShow] = useContext(showContext);
+	const [state] = useContext(loginContext);
 
 	return (
 		<>
-			<Login show={showIn} hide={toggleIn} />
-			<Register show={showReg} hide={toggleReg} />
+			<Login show={show.signin} hide={() => setShow('signin')} />
+			<Register show={show.register} hide={() => setShow('register')} />
 			<Navbar collapseOnSelect className='bg-primary'>
 				<Container fluid='xxl'>
 					<Navbar.Brand className='ms-md-5 ps-md-5'>
@@ -29,10 +29,10 @@ function Header() {
 						</Link>
 					</Navbar.Brand>
 					<Nav className='ms-auto'></Nav>
-					{isLogin ? (
+					{state.isLogin ? (
 						<div className='' id='dpcontain'>
 							<img
-								onClick={toggleDropdown}
+								onClick={() => setShow('dropdown')}
 								style={{ cursor: 'pointer' }}
 								src={user}
 								width='60'
@@ -40,15 +40,15 @@ function Header() {
 								alt='User'
 								className='d-inline-block align-top border rounded-circle border-2 border-white'
 							/>
-							<DropDown show={showDropdown} />
+							<DropDown show={show.dropdown} />
 						</div>
 					) : (
 						<Nav.Link>
-							<Button onClick={toggleIn} variant='primary text-secondary'>
+							<Button onClick={() => setShow('signin')} variant='primary text-secondary'>
 								Login
 							</Button>
 							<Button
-								onClick={toggleReg}
+								onClick={() => setShow('register')}
 								style={{ borderRadius: 10 }}
 								className='ms-4 text-primary fw-bold '
 								variant='secondary'

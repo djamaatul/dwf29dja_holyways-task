@@ -1,39 +1,39 @@
-import React, { useState, createContext } from "react";
+import React, { useReducer, createContext } from 'react';
 
 export const showContext = createContext();
-function ShowProvider(props) {
-	const [showIn, setShowIn] = useState(false);
-	const [showReg, setShowReg] = useState(false);
-	const [showModal, setShowModal] = useState(false);
-	const [showDropdown, setShowDropdown] = useState(false);
-	const [showmodalaprove, setModalApprove] = useState(false);
-
-	const toggleIn = () => setShowIn(!showIn);
-	const toggleReg = () => setShowReg(!showReg);
-	const toggleModal = () => setShowModal(!showModal);
-	const toggleDropdown = () => setShowDropdown(!showDropdown);
-	const toggleModalApprove = () => setModalApprove(!showmodalaprove);
-
-	return (
-		<>
-			<showContext.Provider
-				value={{
-					showIn,
-					toggleIn,
-					showReg,
-					toggleReg,
-					showModal,
-					toggleModal,
-					showDropdown,
-					toggleDropdown,
-					showmodalaprove,
-					toggleModalApprove,
-				}}
-			>
-				{props.children}
-			</showContext.Provider>
-		</>
-	);
+const initialState = {
+	signin: false,
+	register: false,
+	donatemodal: false,
+	dropdown: false,
+	approvemodal: false,
+};
+const reducer = (state, action) => {
+	switch (action) {
+		case 'signin':
+			return {
+				signin: !state.signin,
+			};
+		case 'register':
+			return {
+				register: !state.register,
+			};
+		case 'donate':
+			return {
+				donatemodal: !state.donatemodal,
+			};
+		case 'dropdown':
+			return {
+				dropdown: !state.dropdown,
+			};
+		case 'approve':
+			return {
+				approvemodal: !state.approvemodal,
+			};
+		default:
+	}
+};
+export default function ShowProvider({ children }) {
+	const [show, setShow] = useReducer(reducer, initialState);
+	return <showContext.Provider value={[show, setShow]}>{children}</showContext.Provider>;
 }
-
-export default ShowProvider;

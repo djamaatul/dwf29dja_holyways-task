@@ -2,6 +2,22 @@ import React from 'react';
 import { Card, Row, Col, Alert } from 'react-bootstrap';
 
 function History(props) {
+	const date = new Date(props.updatedAt);
+	const months = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	];
+	const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	return (
 		<Card className='mt-4' style={{ width: '25rem' }}>
 			<Row>
@@ -10,23 +26,23 @@ function History(props) {
 						<Card.Title className='fs-4'>{props.donateTo}</Card.Title>
 						<Card.Text className='fs-8'>
 							<span>
-								<b>Monday</b>, 02 mei 2001
+								<b>{weekday[date.getDay()]}, </b>
+								{`${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`}
 							</span>
 						</Card.Text>
-						<Card.Text className='fs-8 text-primary'>Total : Rp. 20.0000</Card.Text>
+						<Card.Text className='fs-8 text-primary'>Total : {props.donateAmount}</Card.Text>
 					</Card.Body>
 				</Col>
 				{props.viewStatus && (
 					<Col className='d-flex align-items-end pe-4 justify-content-end' xs='4'>
-						{props.success ? (
-							<Alert className='alert-success p-2 py-0  px-5' variant='success'>
-								Success
-							</Alert>
-						) : (
-							<Alert className='alert-success p-2  py-0' variant='danger'>
-								Failed
-							</Alert>
-						)}
+						<Alert
+							className='alert-success p-2 py-0  px-5'
+							variant={
+								props.status == 'success' ? 'success' : props.status == 'pending' ? 'warning' : 'danger'
+							}
+						>
+							{props.status}
+						</Alert>
 					</Col>
 				)}
 			</Row>
