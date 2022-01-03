@@ -24,6 +24,7 @@ function DetailDonate() {
 		try {
 			const response = await API.get(`/fund/${id}`);
 			setFund(response.data.data);
+			console.log(response.data.data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -102,7 +103,7 @@ function DetailDonate() {
 							return (
 								<Col key={item.id} md={12}>
 									<Listdonation
-										name={item.fullName}
+										name={item.users.fullName}
 										donateAmount={item.donateAmount}
 										date={{
 											day: weekday[createdAt.getDay()],

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Modal, Button, Form, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +9,6 @@ import { showContext } from '../../contexts/ShowProvider';
 
 import Register from './Register';
 import AlertModal from './Alert';
-import { useEffect } from 'react';
 
 function Login(props) {
 	const [show, setShow] = useContext(showContext);

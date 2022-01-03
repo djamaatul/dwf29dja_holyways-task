@@ -114,7 +114,7 @@ function Detailfund() {
 							return (
 								<Col key={item.id} md={12}>
 									<Listdonation
-										name={item.fullName}
+										name={item.users.fullName}
 										donateAmount={item.donateAmount}
 										date={{
 											day: weekday[createdAt.getDay()],
@@ -144,7 +144,7 @@ function Detailfund() {
 								<Col key={item.id} md={12}>
 									<Listdonation
 										id={item.id}
-										name={item.fullName}
+										name={item.users.fullName}
 										donateAmount={item.donateAmount}
 										proofattachment={item.proofattachment}
 										idFund={id}

@@ -33,6 +33,7 @@ function ModalComponent(props) {
 				if (response.status === 200) {
 					setMessage('success');
 					setAlert('success');
+				} else {
 				}
 			} catch (error) {
 				console.log(error.response);
