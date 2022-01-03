@@ -15,11 +15,11 @@ function Register(props) {
 		password: '',
 		fullName: '',
 	});
-	useEffect(() => {
-		return () => {
-			setMessage(null);
-		};
-	}, [show]);
+	// useEffect(() => {
+	// 	return () => {
+	// 		setMessage(null);
+	// 	};
+	// }, [show]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

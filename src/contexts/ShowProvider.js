@@ -7,6 +7,7 @@ const initialState = {
 	donatemodal: false,
 	dropdown: false,
 	approvemodal: false,
+	alertmodal: false,
 };
 const reducer = (state, action) => {
 	switch (action) {
@@ -29,6 +30,10 @@ const reducer = (state, action) => {
 		case 'approve':
 			return {
 				approvemodal: !state.approvemodal,
+			};
+		case 'alert':
+			return {
+				alertmodal: !state.alertmodal,
 			};
 		default:
 	}

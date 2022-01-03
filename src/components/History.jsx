@@ -1,23 +1,12 @@
 import React from 'react';
 import { Card, Row, Col, Alert } from 'react-bootstrap';
 
+import { weekday, months } from '../data/date';
+
+import Rupiah from './toRupiah';
+
 function History(props) {
 	const date = new Date(props.updatedAt);
-	const months = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December',
-	];
-	const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	return (
 		<Card className='mt-4' style={{ width: '25rem' }}>
 			<Row>
@@ -30,7 +19,7 @@ function History(props) {
 								{`${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`}
 							</span>
 						</Card.Text>
-						<Card.Text className='fs-8 text-primary'>Total : {props.donateAmount}</Card.Text>
+						<Card.Text className='fs-8 text-primary'>Total : {Rupiah(props.donateAmount)}</Card.Text>
 					</Card.Body>
 				</Col>
 				{props.viewStatus && (

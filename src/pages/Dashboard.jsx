@@ -21,7 +21,6 @@ function Dashboard() {
 	useEffect(() => {
 		landingFund();
 	}, []);
-	console.log(funds);
 	return (
 		<>
 			<Container fluid='xxl' className='pb-5'>

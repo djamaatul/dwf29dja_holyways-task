@@ -8,25 +8,11 @@ import ModalDonate from '../components/modal/ModalDonate';
 
 import { loginContext } from '../contexts/LoginProvider';
 import { showContext } from '../contexts/ShowProvider';
+import { weekday, months } from '../data/date';
 
 import { API } from '../config/api';
 
-function Detailfund() {
-	const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-	const months = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December',
-	];
+function DetailDonate() {
 	const [state] = useContext(loginContext);
 	const [show, setShow] = useContext(showContext);
 	const { id } = useParams();
@@ -37,7 +23,6 @@ function Detailfund() {
 	async function getFund() {
 		try {
 			const response = await API.get(`/fund/${id}`);
-			console.log(response);
 			setFund(response.data.data);
 		} catch (error) {
 			console.log(error);
@@ -45,7 +30,7 @@ function Detailfund() {
 	}
 	useEffect(() => {
 		getFund();
-	}, []);
+	}, [show]);
 	return (
 		<>
 			<Container fluid='sm' className='my-md-4'>
@@ -141,4 +126,4 @@ function Detailfund() {
 	);
 }
 
-export default Detailfund;
+export default DetailDonate;

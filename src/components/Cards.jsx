@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Button, Col, Row, ProgressBar } from 'react-bootstrap';
+
+import toRupiah from './toRupiah';
 function Cards(props) {
 	const navigate = useNavigate();
 	const [persen, setPersen] = useState(0);
-
 	useEffect(() => {
 		setPersen(Math.ceil((props.collected / props.goal) * 100));
 	}, []);
@@ -14,7 +15,10 @@ function Cards(props) {
 	};
 	return (
 		<>
-			<Card style={{ width: '20rem' }} className='mx-sm-0 my-sm-4 mt-4 d-flex justify-content-between'>
+			<Card
+				style={{ minHeight: 525, minWidth: '20rem' }}
+				className='mx-sm-0 my-sm-4 mt-4 d-flex justify-content-between'
+			>
 				<div
 					style={{
 						backgroundImage: `url("${props.src}")`,
@@ -25,15 +29,13 @@ function Cards(props) {
 				></div>
 				<Card.Body>
 					<Card.Title className='text-black fw-bold'>{props.title}</Card.Title>
-					<Card.Text className='overflow-hidden' style={{ height: '100px' }}>
-						{props.description}
-					</Card.Text>
+					<Card.Text>{props.description.substring(0, 100)}</Card.Text>
 					<ProgressBar style={{ height: 5 }} variant='primary' now={persen} />
 				</Card.Body>
 				<Card.Footer style={{ backgroundColor: 'white', borderTop: 0 }}>
 					<Row>
 						<Col xs={8} sm={8} md={7} className='pe-sm-0'>
-							<span>Rp. {props.collected}</span>
+							<span>{toRupiah(props.collected)}</span>
 						</Col>
 						<Col xs={4} sm={2} md={5} className='ps-sm-0 d-flex justify-content-md-end align-end'>
 							<Button

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button, ProgressBar } from 'react-bootstrap';
 
 import Listdonation from '../components/Listdonation';
@@ -7,25 +7,11 @@ import ModalDonate from '../components/modal/ModalDonate';
 
 import { loginContext } from '../contexts/LoginProvider';
 import { showContext } from '../contexts/ShowProvider';
-
-import { API } from '../config/api';
+import { weekday, months } from '../data/date';
+import { API, setAuthToken } from '../config/api';
 
 function Detailfund() {
-	const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-	const months = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December',
-	];
+	const navigate = useNavigate();
 	const [state] = useContext(loginContext);
 	const [show, setShow] = useContext(showContext);
 	const [fund, setFund] = useState({});
@@ -48,8 +34,18 @@ function Detailfund() {
 		}
 	}
 	useEffect(() => {
-		getFund();
-	}, []);
+		if (!state.isLogin) {
+			if (localStorage.token) {
+				setAuthToken(localStorage.token);
+				getFund();
+			} else {
+				navigate('/');
+			}
+		} else {
+			setAuthToken(localStorage.token);
+			getFund();
+		}
+	}, [show]);
 	return (
 		<>
 			<Container>
@@ -109,7 +105,7 @@ function Detailfund() {
 				<Row>
 					<Col md={12} className='ms-md-3 mt-5 mt-md-0'>
 						<h1 className='fs-2 fs-1'>
-							List Donation (<span>{fund?.donations?.length}</span>)
+							List Donation (<span>{successDonate?.length}</span>)
 						</h1>
 					</Col>
 					{fund?.donations?.map((item) => {

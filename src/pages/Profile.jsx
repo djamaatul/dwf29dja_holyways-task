@@ -11,7 +11,7 @@ import { API, setAuthToken } from '../config/api';
 
 function Profile() {
 	const navigate = useNavigate();
-	const [state, dispatch] = useContext(loginContext);
+	const [state] = useContext(loginContext);
 	const [data, setData] = useState([]);
 	const [donates, setDonates] = useState([]);
 	async function getProfileData() {
@@ -44,7 +44,7 @@ function Profile() {
 			getProfileData();
 			userDonate();
 		}
-	}, []);
+	}, [state]);
 
 	return (
 		<Row className='mx-0 px-0'>
@@ -83,20 +83,24 @@ function Profile() {
 				className='d-flex justify-content-sm-center  justify-content-center my-md-5 my-sm-5'
 			>
 				<Row>
-					<Col md={12} xs={12} className='mt-4 mx-0 '>
-						<h1>History Donations</h1>
-						{donates.map((item) => {
-							return (
-								<History
-									key={item.id}
-									status={item.status}
-									updatedAt={item.updatedAt}
-									donateAmount={item.donateAmount}
-									viewStatus
-								/>
-							);
-						})}
-					</Col>
+					<div>
+						<Col md={12} xs={12} className='mt-4 mx-0 '>
+							<h1>History Donations</h1>
+						</Col>
+						<Col style={{ maxHeight: '400px', overflow: 'scroll', minWidth: '27rem' }}>
+							{donates.map((item) => {
+								return (
+									<History
+										key={item.id}
+										status={item.status}
+										updatedAt={item.updatedAt}
+										donateAmount={item.donateAmount}
+										viewStatus
+									/>
+								);
+							})}
+						</Col>
+					</div>
 				</Row>
 			</Col>
 		</Row>

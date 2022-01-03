@@ -4,6 +4,8 @@ import { Card, Row, Col, Button } from 'react-bootstrap';
 import { showContext } from '../contexts/ShowProvider';
 import ModalApprove from './modal/ModalApprove';
 
+import toRupiah from './toRupiah';
+
 function List(props) {
 	const [show, setShow] = useContext(showContext);
 	return (
@@ -18,7 +20,7 @@ function List(props) {
 									<b>{props.date.day}</b>, {props.date.date}
 								</span>
 							</Card.Text>
-							<Card.Text className='fs-8 text-primary'>Total : Rp. {props.donateAmount}</Card.Text>
+							<Card.Text className='fs-8 text-primary'>Total : {toRupiah(props.donateAmount)}</Card.Text>
 						</Card.Body>
 					</Col>
 					{props.view && (

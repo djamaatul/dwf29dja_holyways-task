@@ -8,17 +8,12 @@ import { API } from './config/api';
 
 const App = () => {
 	const [state, dispatch] = useContext(loginContext);
-	useEffect(() => {
-		if (localStorage.token) {
-			setAuthToken(localStorage.token);
-		}
-	}, []);
 
 	useEffect(async () => {
 		if (localStorage.token) {
 			try {
+				setAuthToken(localStorage.token);
 				const response = await API.get('/check-auth');
-
 				if (response.status === 401) {
 					localStorage.removeItem('token');
 					return dispatch({
@@ -28,7 +23,7 @@ const App = () => {
 				localStorage.removeItem('token');
 				dispatch({
 					type: 'RELOGIN_SUCCESS',
-					payload: response.data,
+					payload: response.data.data,
 				});
 			} catch (error) {
 				localStorage.removeItem('token');

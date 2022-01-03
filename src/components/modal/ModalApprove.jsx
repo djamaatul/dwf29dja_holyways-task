@@ -44,7 +44,6 @@ function ModalApprove(props) {
 							variant='primary'
 							onClick={() => {
 								approve();
-								setShow('approve');
 							}}
 						>
 							Approve
