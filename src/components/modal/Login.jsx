@@ -6,6 +6,7 @@ import { API, configJson } from '../../config/api';
 
 import { loginContext } from '../../contexts/LoginProvider';
 import { showContext } from '../../contexts/ShowProvider';
+import { loadingContext } from '../../contexts/LoadingProvider';
 
 import Register from './Register';
 import AlertModal from './Alert';
@@ -13,6 +14,8 @@ import AlertModal from './Alert';
 function Login(props) {
 	const [show, setShow] = useContext(showContext);
 	const [state, dispatch] = useContext(loginContext);
+	const { setProgress } = useContext(loadingContext);
+
 	const [alert, setAlert] = useState('');
 	const [message, setMessage] = useState('');
 	const [form, setForm] = useState({
@@ -23,15 +26,18 @@ function Login(props) {
 	const handleSubmit = async (e) => {
 		try {
 			e.preventDefault();
+			setProgress(20);
 			const response = await API.post('login', JSON.stringify(form), configJson);
 			if (response.status === 200) {
+				setProgress(100);
 				dispatch({
 					type: 'LOGIN_SUCCESS',
 					payload: response.data.data,
 				});
 				setShow('signin');
-				setMessage('success');
-				return setAlert('success');
+				setTimeout(() => {
+					setProgress(101);
+				}, 1000);
 			}
 		} catch (error) {
 			console.log(error.response);

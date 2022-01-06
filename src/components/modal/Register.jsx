@@ -57,7 +57,7 @@ function Register(props) {
 								onChange={(e) => setForm({ ...form, password: e.target.value })}
 							/>
 						</Form.Group>
-						<Form.Group className='my-4' controlId='formBasicPassword'>
+						<Form.Group className='my-4'>
 							<Form.Control
 								type='text'
 								placeholder='Full name'

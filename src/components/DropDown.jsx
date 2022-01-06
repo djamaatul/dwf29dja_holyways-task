@@ -13,7 +13,7 @@ function DropDown(props) {
 	const [state, dispatch] = useContext(loginContext);
 	const [show, setShow] = useContext(showContext);
 	return (
-		<div style={{ display: props.show ? 'inline-block' : 'none' }} className='dropdown '>
+		<div style={{ display: props.show ? 'inline-block' : 'none' }} className='dropdown me-md-5'>
 			<ul>
 				<li>
 					<Link to='/profile' onClick={() => setShow('dropdown')}>
@@ -29,8 +29,8 @@ function DropDown(props) {
 			<hr />
 			<ul>
 				<li>
-					<Link
-						to='/'
+					<a
+						href='/'
 						onClick={() => {
 							localStorage.removeItem('token');
 							dispatch({
@@ -40,7 +40,7 @@ function DropDown(props) {
 						}}
 					>
 						<img width='30px' height='30px' src={logout} alt='' /> Logout
-					</Link>
+					</a>
 				</li>
 			</ul>
 		</div>

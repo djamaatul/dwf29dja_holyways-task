@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Button, Col, Row, ProgressBar } from 'react-bootstrap';
 
 import toRupiah from './toRupiah';
+
 function Cards(props) {
 	const navigate = useNavigate();
 	const [persen, setPersen] = useState(0);
@@ -30,9 +31,13 @@ function Cards(props) {
 				<Card.Body>
 					<Card.Title className='text-black fw-bold'>{props.title}</Card.Title>
 					<Card.Text>{props.description.substring(0, 100)}</Card.Text>
-					<ProgressBar style={{ height: 5 }} variant='primary' now={persen} />
 				</Card.Body>
 				<Card.Footer style={{ backgroundColor: 'white', borderTop: 0 }}>
+					<Row>
+						<Col xs={12} className='my-2'>
+							<ProgressBar style={{ height: 5 }} variant='primary' now={persen} />
+						</Col>
+					</Row>
 					<Row>
 						<Col xs={8} sm={8} md={7} className='pe-sm-0'>
 							<span>{toRupiah(props.collected)}</span>

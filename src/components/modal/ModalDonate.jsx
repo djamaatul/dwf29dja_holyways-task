@@ -22,7 +22,7 @@ function ModalComponent(props) {
 		if (state) {
 			const formData = new FormData();
 			if (!form.proofattachment) {
-				setMessage('please upload file!');
+				setMessage('please upload file image!');
 				return setAlert('danger');
 			}
 			formData.set('donateAmount', form.donateAmount);
@@ -33,7 +33,6 @@ function ModalComponent(props) {
 				if (response.status === 200) {
 					setMessage('success');
 					setAlert('success');
-				} else {
 				}
 			} catch (error) {
 				console.log(error.response);
@@ -89,7 +88,6 @@ function ModalComponent(props) {
 											e.target.files = null;
 											e.target.value = null;
 											document.querySelector('#preview').removeAttribute('src');
-											return setMessage('File Harus Image');
 										}}
 									/>
 								</Form.Group>
