@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Row, Alert } from 'react-bootstrap';
 
 import struk from '../../assets/icon/struk.svg';
+import bca from '../../assets/icon/bca.webp';
 
 import { API, configMulter, setAuthToken } from '../../config/api';
 import { showContext } from '../../contexts/ShowProvider';
@@ -54,7 +55,23 @@ function ModalComponent(props) {
 			<Modal onHide={props.hide} show={props.show}>
 				<Modal.Body>
 					<Form onSubmit={handleDonate}>
-						<Form.Group className='my-4 mt-0' controlId='formBasicEmail'>
+						<Form.Group className='my-1 mt-0'>
+							<Alert
+								style={{
+									width: '100%',
+									padding: '0px 10px',
+									lineHeight: '40px',
+								}}
+								variant='warning'
+							>
+								Pembayaran donasi hanya dapat dilakukan melalui rekening :
+								<div className='d-flex align-items-center my-2 justify-content-center'>
+									<img src={bca} width={130} /> <span className='fs-1 ms-4'> 8801177000</span>
+								</div>
+								Atas nama : PT. DumbWays Indonesia Teknologi
+							</Alert>
+						</Form.Group>
+						<Form.Group className='my-4 mt-0'>
 							<Form.Control
 								onChange={(e) => setForm({ ...form, donateAmount: e.target.value })}
 								type='text'

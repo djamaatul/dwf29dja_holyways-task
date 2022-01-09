@@ -71,7 +71,7 @@ function Formfund() {
 						</Form.Group>
 						<Form.Group controlId='thumbnail' className='mb-3 position-relative'>
 							<Row>
-								<Col md={2} xs={12}>
+								<Col md={12} xs={12}>
 									<Button className=' full mt-2top-0 '>Attach Payment</Button>
 									<Form.Control
 										className='position-absolute top-0'
@@ -82,6 +82,8 @@ function Formfund() {
 												const fr = new FileReader();
 												fr.onload = () => {
 													document.getElementById('preview').setAttribute('src', fr.result);
+													document.getElementById('fileName').innerHTML =
+														e.target.files[0].name;
 												};
 												fr.readAsDataURL(e.target.files[0]);
 												return setForm({ ...form, thumbnail: e.target.files[0] });
@@ -91,9 +93,10 @@ function Formfund() {
 											}
 										}}
 									/>
+									<span id='fileName' className='ms-3'></span>
 								</Col>
-								<Col md={10} xs={12}>
-									<img src='' id='preview' width='10%' alt='' />
+								<Col md={2} xs={12} className='my-2'>
+									<img src='' id='preview' width='100%' alt='' />
 								</Col>
 							</Row>
 						</Form.Group>

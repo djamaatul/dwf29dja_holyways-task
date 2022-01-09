@@ -38,6 +38,7 @@ function Profile() {
 			const response = await API.get('/userDonates');
 			setProgress(100);
 			setDonates(response.data.data);
+			console.log(response);
 			setTimeout(() => {
 				setLoading(false);
 			}, 500);
@@ -126,7 +127,14 @@ function Profile() {
 						<Col md={12} xs={12} className='mt-4 mx-0 '>
 							<h1>History Donations</h1>
 						</Col>
-						<Col style={{ maxHeight: '400px', overflow: 'scroll', minWidth: '27rem' }}>
+						<Col
+							style={{
+								maxHeight: '400px',
+								overflow: 'scroll',
+								minWidth: '27rem',
+								scrollbarWidth: 'none',
+							}}
+						>
 							{!loading ? (
 								donates.length > 0 ? (
 									donates.map((item) => {
@@ -135,6 +143,7 @@ function Profile() {
 												fund={item.funds.title}
 												key={item.id}
 												status={item.status}
+												message={item.message}
 												updatedAt={item.updatedAt}
 												donateAmount={item.donateAmount}
 												viewStatus
@@ -144,7 +153,7 @@ function Profile() {
 								) : (
 									<div className='d-flex justify-content-center flex-column p-5 '>
 										<img src={noresult} width={200} alt='' />
-										<h4>You dont have donate</h4>
+										<h4>You never donating</h4>
 									</div>
 								)
 							) : (

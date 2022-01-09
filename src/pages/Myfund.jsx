@@ -66,7 +66,7 @@ function Raisefund() {
 				<Row className='d-flex justify-content-start'>
 					{myfunds.map((item, index) => {
 						return (
-							<Col md={3} sm={6} xs={12} key={index}>
+							<Col lg={4} md={6} xs={12} key={index}>
 								<Cards
 									id={item.id}
 									title={item.title}
@@ -85,7 +85,7 @@ function Raisefund() {
 						<img src={noresult} width={200} alt='' />
 					</Col>
 					<Col xs={12} md={12} className='d-flex justify-content-center'>
-						<h4>You dont have donate</h4>
+						<h4>You dont have Fund</h4>
 					</Col>
 				</Row>
 			)}

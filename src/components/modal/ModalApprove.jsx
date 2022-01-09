@@ -1,15 +1,31 @@
-import React, { useContext } from 'react';
-import { Modal, Button, Form, Alert } from 'react-bootstrap';
+import React, { useContext, useState } from 'react';
+import { Modal, Button, Form, Alert, Row, Col } from 'react-bootstrap';
 
 import { API, configJson } from '../../config/api';
 import { showContext } from '../../contexts/ShowProvider';
 
 function ModalApprove(props) {
 	const [show, setShow] = useContext(showContext);
-	const data = {
-		status: 'success',
-	};
+	const [message, setMessage] = useState(null);
 	async function approve() {
+		const data = {
+			status: 'success',
+			message: message ? message : 'terimakasih telah mendonasi!',
+		};
+		try {
+			const response = await API.patch(`/donate/${props.idFund}/${props.id}`, data, configJson);
+			if (response.status == 200) {
+				return setShow('approve');
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+	async function reject() {
+		const data = {
+			status: 'failed',
+			message: message ? message : 'maaf donasi gagal, dana belum masuk!',
+		};
 		try {
 			const response = await API.patch(`/donate/${props.idFund}/${props.id}`, data, configJson);
 			if (response.status == 200) {
@@ -22,7 +38,7 @@ function ModalApprove(props) {
 	return (
 		<Modal onHide={props.hide} show={props.show}>
 			<Modal.Body>
-				<h5>{props.name}</h5>
+				<h5>{props.name} :</h5>
 				<Form>
 					<Alert
 						style={{
@@ -37,18 +53,42 @@ function ModalApprove(props) {
 						{props.donateAmount}
 					</Alert>
 					<div className='d-flex justify-content-center pb-3'>
-						<img src={props.proofattachment} alt='struk' />
+						<img src={props.proofattachment} width='100%' alt='struk' />
 					</div>
-					<div className='d-grid gap-2'>
-						<Button
-							variant='primary'
-							onClick={() => {
-								approve();
-							}}
-						>
-							Approve
-						</Button>
+					<div className='d-flex justify-content-center pb-3'>
+						<Form.Control
+							onChange={(e) => setMessage(e.target.value)}
+							type='text'
+							placeholder='Message'
+							required
+						/>
 					</div>
+					<Row>
+						<Col xs={6} className='d-flex justify-content-center'>
+							<Button
+								style={{ width: '100%' }}
+								variant='dark'
+								className='bg-primary text-white'
+								onClick={() => {
+									reject();
+								}}
+							>
+								Reject
+							</Button>
+						</Col>
+						<Col xs={6} className='d-flex justify-content-center'>
+							<Button
+								style={{ width: '100%' }}
+								variant='dark'
+								className='bg-success text-white'
+								onClick={() => {
+									approve();
+								}}
+							>
+								Approve
+							</Button>
+						</Col>
+					</Row>
 				</Form>
 			</Modal.Body>
 		</Modal>

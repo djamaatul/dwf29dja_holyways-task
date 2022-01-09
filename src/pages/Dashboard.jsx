@@ -103,11 +103,11 @@ function Dashboard() {
 					</Col>
 				</Row>
 				<Row className='bg-secondary mt-5 ps-md-5 pt-md-5 '>
-					<Col className='order-md-2 offset-md-4' md={6} sm={12}>
+					<Col className='order-lg-2 offset-lg-4 offset-xs-0' md={6} sm={12}>
 						{!loading ? (
 							<>
 								<h1 className='display-5 fw-bold'>{funds[1]?.title}</h1>
-								<Row style={{ color: 'gray', height: '200px' }}>
+								<Row style={{ color: 'gray' }}>
 									<Col md={6} sm={12}>
 										<p className='lh-lg'>{funds[1]?.description}</p>
 									</Col>
@@ -130,7 +130,7 @@ function Dashboard() {
 					</Col>
 				</Row>
 				<Row>
-					<Col className='d-md-flex justify-content-center mt-md-4 pt-md-5' md={12}>
+					<Col className='d-flex justify-content-left justify-content-md-center  my-2' xs={12}>
 						{!loading && (
 							<Link to={`detaildonate/${funds[1]?.id}`}>
 								<Button className='btn-secondary text-primary'>
@@ -140,16 +140,10 @@ function Dashboard() {
 						)}
 					</Col>
 				</Row>
-				<Row className='d-flex justify-content-center'>
+				<Row className='justify-content-center'>
 					{funds.map((item) => {
 						return (
-							<Col
-								className='d-flex justify-content-md-end justify-content-center'
-								md={3}
-								sm={6}
-								xs={12}
-								key={item.id}
-							>
+							<Col className='' lg={4} md={6} xs={12} key={item.id}>
 								<Cards
 									id={item.id}
 									className='mx-md-2'

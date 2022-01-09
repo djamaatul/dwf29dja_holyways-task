@@ -45,11 +45,9 @@ function DetailDonate() {
 	useEffect(() => {
 		setLoading(true);
 		setProgress(20);
+		getFund();
 	}, []);
 
-	useEffect(() => {
-		getFund();
-	}, [show]);
 	return (
 		<>
 			<Container fluid='sm' className='my-md-4'>
