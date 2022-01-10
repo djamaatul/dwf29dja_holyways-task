@@ -66,7 +66,7 @@ function Raisefund() {
 				<Row className='d-flex justify-content-start'>
 					{myfunds.map((item, index) => {
 						return (
-							<Col lg={4} md={6} xs={12} key={index}>
+							<Col lg={3} md={6} xs={12} key={index}>
 								<Cards
 									id={item.id}
 									title={item.title}

@@ -36,9 +36,9 @@ function Login(props) {
 				});
 				setShow('signin');
 				setTimeout(() => {
-					setProgress(101);
 					setMessage('Success');
 					setAlert('success');
+					setProgress(101);
 				}, 1000);
 			}
 		} catch (error) {

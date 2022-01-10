@@ -143,7 +143,7 @@ function Dashboard() {
 				<Row className='justify-content-center'>
 					{funds.map((item) => {
 						return (
-							<Col className='' lg={4} md={6} xs={12} key={item.id}>
+							<Col className='' lg={3} md={6} xs={12} key={item.id}>
 								<Cards
 									id={item.id}
 									className='mx-md-2'
