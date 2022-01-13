@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Modal, Button, Form, Col, Row, Alert } from 'react-bootstrap';
 
 import struk from '../../assets/icon/struk.svg';
-import bca from '../../assets/icon/bca.webp';
+import bca from '../../assets/icon/bca.png';
 
 import { API, configMulter, setAuthToken } from '../../config/api';
 import { showContext } from '../../contexts/ShowProvider';

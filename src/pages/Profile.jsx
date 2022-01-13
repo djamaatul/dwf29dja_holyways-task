@@ -139,7 +139,7 @@ function Profile() {
 											fund={item.funds.title}
 											key={item.id}
 											status={item.status}
-											message={item.message}
+											message={item?.message ?? 'menunggu verifikasi .. '}
 											updatedAt={item.updatedAt}
 											donateAmount={item.donateAmount}
 											viewStatus

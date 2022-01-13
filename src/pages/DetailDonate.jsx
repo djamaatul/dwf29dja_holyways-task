@@ -26,7 +26,8 @@ function DetailDonate() {
 
 	let since = new Date(fund?.createdAt);
 	let persen = Math.ceil((fund?.collected / fund?.goal) * 100);
-	let successDonate = fund?.donations?.filter((e) => e.status == 'success');
+	let successDonate = fund?.donations?.filter((e) => e.status === 'success');
+	console.log(successDonate);
 	async function getFund() {
 		try {
 			const response = await API.get(`/fund/${id}`);
@@ -124,7 +125,7 @@ function DetailDonate() {
 								{!loading ? (
 									<>
 										<span>
-											{fund?.donations?.length} <small>Donation</small>
+											{successDonate?.length} <small>Donation</small>
 										</span>
 										<span>
 											{Math.ceil((Date.now() - since?.getTime()) / (1000 * 60 * 60 * 24))}

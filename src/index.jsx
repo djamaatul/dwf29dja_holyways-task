@@ -37,7 +37,7 @@ ReactDOM.render(
 								</Route>
 								<Route path='makefund' element={<Formfund />} />
 							</Route>
-							<Route
+							{/* <Route
 								path='*'
 								element={
 									<div
@@ -61,7 +61,7 @@ ReactDOM.render(
 										</div>
 									</div>
 								}
-							/>
+							/> */}
 						</Routes>
 					</Router>
 				</LoadingProvider>
